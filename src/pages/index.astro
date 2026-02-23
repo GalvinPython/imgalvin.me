@@ -1,17 +1,503 @@
 ---
+import { GithubCard } from "github-cards-react";
+import "../styles/global.css";
 
+const stack = {
+  languages: [
+    "TypeScript",
+    "JavaScript",
+    "Java",
+    "Python",
+    "Rust",
+    "Go",
+    "SQL",
+  ],
+  frontend: ["Astro", "React", "Tailwind CSS", "Next.js"],
+  backend: ["Node.js", "Bun", "Express", "Elysia"],
+  tools: [
+    "Git",
+    "GitHub",
+    "Docker",
+    "AWS",
+    "VSCode",
+    "Visual Studio",
+    "IntelliJ",
+    "CLion",
+  ],
+  databases: ["PostgreSQL", "MySQL", "SQLite"],
+  linux: ["Ubuntu", "Arch", "Debian", "Alpine"],
+  native: ["Android Studio"],
+  apis: ["YouTube", "Twitch", "Discord", "Twitter"],
+};
+
+const runningConfig = {
+  coding: {
+    editor: "VSCode",
+    terminal: "Windows Terminal",
+    shell: "zsh (VMs and servers) / PowerShell (main PC)",
+    os: "Windows 11 (WSL2: Ubuntu)",
+  },
+  pc: {
+    model: "Custom Build (MSI B550 Gaming Plus)",
+    cpu: "AMD Ryzen 7 3700X",
+    gpu: "NVIDIA RTX 3060 Ti",
+    ram: "32GB DDR4",
+    storage: "Too much",
+    os: "Windows 11 Pro",
+    notes:
+      "Main development machine. Handles all coding, gaming, and general use.",
+  },
+  laptop: {
+    model: "HP ProBook 4 G1a 16 inch Notebook AI PC",
+    cpu: "AMD Ryzen 7 250",
+    gpu: "Integrated Ryzen 780M Graphics",
+    ram: "32GB DDR5",
+    storage: "1TB NVMe SSD",
+    os: "Windows 11 Pro",
+    notes:
+      "Touchscreen monitor is a nice addition. Portable development machine, but for when I'm mainly at college. Minecraft is really fast though!",
+  },
+};
+
+const funStuff = {
+  games: ["GTA V", "Minecraft", "Trackmania", "MSFS 2020"],
+  music: ["Whatever I fancy that day", "Synthwave for YouTube videos however"],
+};
+
+const mediaStack = {
+  recording: ["OBS Studio"],
+  videoEditing: ["DaVinci Resolve"],
+  imageEditing: ["Photoshop"],
+};
+
+const projects = [
+  {
+    username: "galvinpython",
+    repo: "feedr",
+  },
+];
+
+const profile = {
+  name: "Galvin",
+  role: "Full-Stack, Modder and Bot Developer",
+  location: "London, UK",
+  focus:
+    "build websites, APIs, mods and bots! Passionate about open-source projects",
+};
+
+const socials = {
+  github: { link: "https://github.com/galvinpython", display: "@galvinpython" },
+  twitter: {
+    link: "https://twitter.com/reallygalvin",
+    display: "@reallygalvin",
+  },
+  discord: {
+    link: "https://discord.com/users/330462254053064704",
+    display: "@imgalvin",
+  },
+  npm: {
+    link: "https://www.npmjs.com/~imgalvin",
+    display: "~imgalvin",
+  },
+};
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content={`${profile.name} - ${profile.role}. Stack, projects, and developer profile.`}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://avatars.githubusercontent.com/u/77013913?v=4&size=32"
+    />
+    <title>{profile.name} · Developer Profile</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased">
+    <script src="/oneko.js" is:inline></script>
+    <main class="mx-auto min-h-screen max-w-5xl px-6 py-12 md:px-10 md:py-16">
+      <header
+        class="mb-12 rounded-2xl border border-[#3B1C63] bg-slate-900/60 p-8 shadow-sm"
+      >
+        <p class="mb-2 text-xl text-slate-400">👋 Hi, I'm</p>
+        <h1 class="text-3xl font-bold md:text-5xl">{profile.name}</h1>
+        <p class="mt-2 text-lg text-indigo-300">I'm a {profile.role}</p>
+        <p class="mt-4 max-w-2xl text-slate-300">I {profile.focus}</p>
+        <p class="mt-4 text-slate-400">You can find me here:</p>
+        <div class="mt-6 flex flex-wrap gap-3 text-sm">
+          <a
+            class="rounded-md border border-[#3B1C63] px-3 py-2 hover:border-indigo-400"
+            href={socials.github.link}
+            target="_blank"
+            rel="noreferrer">Github: {socials.github.display}</a
+          >
+          <a
+            class="rounded-md border border-[#3B1C63] px-3 py-2 hover:border-indigo-400"
+            href={socials.twitter.link}
+            target="_blank"
+            rel="noreferrer">Twitter: {socials.twitter.display}</a
+          >
+          <a
+            class="rounded-md border border-[#3B1C63] px-3 py-2 hover:border-indigo-400"
+            href={socials.npm.link}
+            target="_blank"
+            rel="noreferrer">NPM: {socials.npm.display}</a
+          >
+          <a
+            class="rounded-md border border-[#3B1C63] px-3 py-2 hover:border-indigo-400"
+            href={socials.discord.link}
+            target="_blank"
+            rel="noreferrer">Discord: {socials.discord.display}</a
+          >
+        </div>
+      </header>
+
+      <section class="mb-10">
+        <h2 class="mb-4 text-2xl font-semibold">Tech Stack</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Languages</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.languages.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Frontend</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.frontend.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Backend</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.backend.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Tools</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.tools.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Databases</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.databases.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Linux Distros</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.linux.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Native Development</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                stack.native.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="mb-4 text-2xl font-semibold">Media Stack</h2>
+        <div class="grid gap-4 md:grid-cols-3">
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Recording</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                mediaStack.recording.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Video Editing</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                mediaStack.videoEditing.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Image Editing</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                mediaStack.imageEditing.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="mb-4 text-2xl font-semibold">Fun Stuff</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Games</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                funStuff.games.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Music</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                funStuff.music.map((item) => (
+                  <li class="rounded-full bg-[#2E1A47] px-3 py-1 text-sm text-slate-200">
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="mb-4 text-2xl font-semibold">What I'm Running</h2>
+        <div class="grid gap-4 md:grid-cols-3">
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Coding Setup</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>
+                <span class="text-slate-400">Editor:</span>
+                {runningConfig.coding.editor}
+              </li>
+              <li>
+                <span class="text-slate-400">Terminal:</span>
+                {runningConfig.coding.terminal}
+              </li>
+              <li>
+                <span class="text-slate-400">Shell:</span>
+                {runningConfig.coding.shell}
+              </li>
+              <li>
+                <span class="text-slate-400">OS:</span>
+                {runningConfig.coding.os}
+              </li>
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Main PC</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>
+                <span class="text-slate-400">Model:</span>
+                {runningConfig.pc.model}
+              </li>
+              <li>
+                <span class="text-slate-400">CPU:</span>
+                {runningConfig.pc.cpu}
+              </li>
+              <li>
+                <span class="text-slate-400">GPU:</span>
+                {runningConfig.pc.gpu}
+              </li>
+              <li>
+                <span class="text-slate-400">RAM:</span>
+                {runningConfig.pc.ram}
+              </li>
+              <li>
+                <span class="text-slate-400">Storage:</span>
+                {runningConfig.pc.storage}
+              </li>
+              <li>
+                <span class="text-slate-400">OS:</span>
+                {runningConfig.pc.os}
+              </li>
+            </ul>
+            <p class="mt-3 text-sm text-slate-400">{runningConfig.pc.notes}</p>
+          </article>
+
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <h3 class="mb-3 font-medium text-indigo-300">Laptop</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>
+                <span class="text-slate-400">Model:</span>
+                {runningConfig.laptop.model}
+              </li>
+              <li>
+                <span class="text-slate-400">CPU:</span>
+                {runningConfig.laptop.cpu}
+              </li>
+              <li>
+                <span class="text-slate-400">GPU:</span>
+                {runningConfig.laptop.gpu}
+              </li>
+              <li>
+                <span class="text-slate-400">RAM:</span>
+                {runningConfig.laptop.ram}
+              </li>
+              <li>
+                <span class="text-slate-400">Storage:</span>
+                {runningConfig.laptop.storage}
+              </li>
+              <li>
+                <span class="text-slate-400">OS:</span>
+                {runningConfig.laptop.os}
+              </li>
+            </ul>
+            <p class="mt-3 text-sm text-slate-400">
+              {runningConfig.laptop.notes}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="mb-4 text-2xl font-semibold">Projects</h2>
+        <div class="grid gap-4">
+          <article
+            class="rounded-xl border border-[#3B1C63] bg-slate-900/60 p-5"
+          >
+            <div class="flex flex-col">
+              {
+                projects.map((project) => (
+                  <GithubCard
+                    username={project.username}
+                    repo={project.repo}
+                    showLanguagesBar={true}
+                    theme="dark"
+                    client:load
+                  />
+                ))
+              }
+            </div>
+          </article>
+        </div>
+      </section>
+      <section>
+        <h2 class="mb-4 text-2xl font-semibold">Developer Info</h2>
+        <div
+          class="grid gap-4 rounded-xl border border-[#3B1C63] bg-slate-900/60 p-6 md:grid-cols-3"
+        >
+          <div>
+            <p class="text-sm text-slate-400">Location</p>
+            <p class="mt-1 font-medium">{profile.location}</p>
+          </div>
+          <!-- <div>
+              <p class="text-sm text-slate-400">Email</p>
+              <a
+                class="mt-1 inline-block font-medium text-indigo-300"
+                href={`mailto:${profile.email}`}>{profile.email}</a
+              >
+            </div> -->
+          <div>
+            <p class="text-sm text-slate-400">GitHub</p>
+            <a
+              class="mt-1 inline-block font-medium text-indigo-300"
+              href={socials.github.link}
+              target="_blank"
+              rel="noreferrer">{socials.github.display}</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
