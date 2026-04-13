@@ -9,7 +9,7 @@
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
         "astro": "^6.1.2",
-        "github-cards-react": "^0.2.0",
+        "github-cards-react": "^0.2.1",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "tailwindcss": "^4.2.1",
@@ -443,7 +443,7 @@
 
     "gensync": ["gensync@1.0.0-beta.2", "", {}, "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="],
 
-    "github-cards-react": ["github-cards-react@0.2.0", "", { "dependencies": { "@primer/octicons-react": "^19.22.0", "linguist-colors-list": "^1.0.20260223" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" } }, "sha512-A4mEU30m1gv9lmDh8tXHqcFNB/mx0jEIrhMdOqmo1VnTl4xGcE6LphXjF7KpfGfCFFNSi3uHzy3m3avrMKaqBw=="],
+    "github-cards-react": ["github-cards-react@0.2.1", "", { "dependencies": { "@primer/octicons-react": "^19.22.0", "linguist-colors-list": "^1.0.20260223" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" } }, "sha512-yMuePleWsZfv74u35coY+iODuKTRpou3Ncomio0b8k6JmO0WaSdYZfORREOWqEjwaUxbs0Bg3maGxXwji86fpA=="],
 
     "github-slugger": ["github-slugger@2.0.0", "", {}, "sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw=="],
 
